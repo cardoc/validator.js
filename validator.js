@@ -208,6 +208,18 @@
         return str.length === 0;
     };
 
+	validator.isNotNull = function (str) {
+		return !this.isNull(str);
+	};
+
+	validator.isBlank = function (str) {
+		return this.isNull(this.trim(str));
+	};
+
+	validator.isNotBlank = function (str) {
+		return !this.isBlank(str);
+	};
+
     validator.isLength = function (str, min, max) {
         return str.length >= min && (typeof max === 'undefined' || str.length <= max);
     };

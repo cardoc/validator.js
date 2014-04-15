@@ -376,6 +376,25 @@ describe('Validators', function () {
         });
     });
 
+	it('should validate empty strings', function () {
+		test({
+			validator: 'isBlank',
+			valid: [
+				'',
+				NaN,
+				[],
+				undefined,
+				null,
+				' ',
+				'	'
+			],
+			invalid: [
+				'foo',
+				'   bar  '
+			]
+		});
+	});
+
     it('should validate strings against an expected value', function () {
         test({ validator: 'equals', args: ['abc'], valid: ['abc'], invalid: ['Abc', '123'] });
     });
